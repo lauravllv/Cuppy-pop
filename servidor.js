@@ -226,7 +226,8 @@ app.post("/api/crear-pago", async (req, res) => {
                     success: `${APP_URL}/pago/resultado`,
                     pending: `${APP_URL}/pago/resultado`,
                     failure: `${APP_URL}/pago/resultado`
-                }
+                },
+                auto_return: "approved"
             }
         });
 
