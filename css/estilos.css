@@ -1,0 +1,1349 @@
+/* 
+   CUPPY POP - ESTILOS PRINCIPALES
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff8f3;
+    color: #5a3830;
+    padding-top: 75px;
+}
+
+/* 
+   ENCABEZADO
+ */
+
+header {
+    position: relative;
+    width: 100%;
+    padding: 22px 70px;
+    background-color: #fffaf7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1d8ce;
+
+/* 
+   BARRA FIJA DE NAVAEGACION
+   */
+
+position: fixed;
+top: 0;
+z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #7b4035;
+}
+
+.logo img {
+    width: 80px;
+height:auto;
+display:block;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #6b443b;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #d9798c;
+}
+
+/* 
+   SECCIÓN INICIO
+   */
+
+.inicio {
+    min-height: 520px;
+    padding: 80px 90px;
+    display: block;
+    background-color: #fce9e5;
+}
+
+.inicio .texto-inicio {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.inicio .imagen-inicio {
+    width: 45%;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.texto-inicio {
+    max-width: 600px;
+}
+
+.subtitulo {
+    color: #c96c80;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.texto-inicio h1 {
+    font-family: Georgia, serif;
+    font-size: 52px;
+    line-height: 1.15;
+    color: #633c34;
+    margin-bottom: 25px;
+}
+
+.texto-inicio h1 span {
+    color: #d9798c;
+}
+
+.texto-inicio > p:not(.subtitulo) {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #76574f;
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+    background-color: #b96b68;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #96534f;
+}
+
+/* 
+   IMAGEN PRINCIPAL 
+   */
+
+.imagen-inicio {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #f8cfd0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px;
+    box-shadow: 0 15px 35px rgba(120, 70, 60, 0.12);
+}
+
+.imagen-inicio img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* 
+   PRODUCTOS
+   */
+
+.productos {
+    padding: 80px 70px;
+    background-color: #fff8f3;
+}
+
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.titulo-seccion h2 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    color: #633c34;
+    margin-bottom: 12px;
+}
+
+.titulo-seccion p {
+    color: #9b7067;
+    font-size: 16px;
+}
+
+.productos-contenedor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.producto {
+    background-color: white;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    border: 1px solid #f0ddd6;
+    transition: transform 0.2s ease;
+}
+
+.producto:hover {
+    transform: translateY(-6px);
+}
+
+.producto-imagen {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: #fce4e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+
+.producto h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #633c34;
+    margin-bottom: 10px;
+}
+
+.producto p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #896961;
+    margin-bottom: 15px;
+}
+
+.producto strong {
+    color: #c96c80;
+    font-size: 16px;
+}
+
+/* 
+   PIE DE PÁGINA
+  */
+
+footer {
+    padding: 30px;
+    text-align: center;
+    background-color: #633c34;
+    color: #fff4ef;
+    font-size: 14px;
+}
+
+/* 
+   PANTALLAS MÁS PEQUEÑAS
+    */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 20px 30px;
+    }
+
+    .inicio {
+        padding: 60px 40px;
+    }
+
+    .texto-inicio h1 {
+        font-size: 42px;
+    }
+
+    .productos-contenedor {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+
+
+
+/* ================================
+   CARRUSEL DE IMÁGENES
+   ================================ */
+
+.carrusel {
+    padding: 80px 70px;
+    background-color: #fffaf7;
+    text-align: center;
+}
+
+.carrusel-contenedor {
+    max-width: 750px;
+    height: 380px;
+    margin: 40px auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carrusel-imagen {
+    width: 600px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: #fce4e2;
+    box-shadow: 0 15px 35px rgba(120, 70, 60, 0.15);
+}
+
+.carrusel-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+/* FLECHAS */
+
+.flecha {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #b96b68;
+    color: white;
+    font-size: 32px;
+    line-height: 45px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.flecha:hover {
+    background-color: #96534f;
+}
+
+/* INDICADORES */
+
+.indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.punto {
+    width: 10px;
+    height: 10px;
+    background-color: #e8c1bd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.punto.activo {
+    background-color: #b96b68;
+    transform: scale(1.3);
+}
+
+
+/* ================================
+   ANIMACIÓN DEL CARRUSEL
+   ================================ */
+
+@keyframes aparecerImagen {
+    from {
+        opacity: 0;
+        transform: scale(1.03);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.carrusel-imagen img {
+    animation: aparecerImagen 0.6s ease;
+}
+
+
+
+/* ================================
+   PARALLAX
+   ================================ */
+
+.parallax {
+    min-height: 420px;
+    background-image: url("../img/galletachocolate.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(80, 45, 40, 0.35);
+}
+
+.parallax-contenido {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 40px;
+}
+
+.parallax-contenido p {
+    font-size: 15px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.parallax-contenido h2 {
+    font-size: 42px;
+    margin: 0 0 15px;
+}
+
+.parallax-contenido span {
+    font-size: 18px;
+}
+
+
+
+
+/* ================================
+   ANIMACIONES DE INICIO
+   ================================ */
+
+.texto-inicio {
+    animation: aparecerTexto 1s ease;
+}
+
+.imagen-inicio {
+    animation: aparecerPastel 1.2s ease;
+}
+
+@keyframes aparecerTexto {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes aparecerPastel {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Movimiento suave del pastel */
+
+.imagen-inicio img {
+    animation: flotarPastel 3s ease-in-out infinite;
+}
+
+@keyframes flotarPastel {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* ================================
+   SECCIÓN NOSOTROS
+   ================================ */
+
+.nosotros {
+    padding: 90px 70px;
+    background-color: #fff6f2;
+}
+
+.imagen-nosotros img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(120, 70, 60, 0.15);
+}
+
+
+/* TARJETAS */
+
+.valores-nosotros {
+    width: 100%;
+    margin-top: 60px;
+
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.valor {
+    width: 260px;
+    padding: 30px 25px;
+
+    background-color: white;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(120, 70, 60, 0.10);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.valor span {
+    font-size: 35px;
+}
+
+.valor h3 {
+    margin: 15px 0 10px;
+    color: #7b4035;
+}
+
+.valor p {
+    margin: 0;
+    line-height: 1.6;
+    color: #6f5a55;
+}
+
+
+/* EFECTO AL PASAR EL CURSOR */
+
+.valor:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(120, 70, 60, 0.18);
+}
+
+
+
+
+/* ================================
+   PARALLAX DE NOSOTROS
+   ================================ */
+
+.parallax-nosotros {
+    width: 100%;
+    min-height: 450px;
+
+    background-image: url("../img/cupcakeparallax.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 25px;
+}
+
+.parallax-nosotros::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-color: rgba(80, 45, 40, 0.35);
+}
+
+.parallax-nosotros-contenido {
+    position: relative;
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    padding: 40px;
+}
+
+.parallax-nosotros-contenido p {
+    font-size: 15px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.parallax-nosotros-contenido h2 {
+    font-size: 42px;
+    margin: 0 0 15px;
+}
+
+.parallax-nosotros-contenido span {
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+/* ANIMACIÓN DEL PARALLAX DE NOSOTROS */
+
+.parallax-nosotros-contenido {
+    animation: aparecerNosotros 1s ease;
+}
+
+@keyframes aparecerNosotros {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+/* ================================
+   GALERÍA
+   ================================ */
+
+.galeria {
+    padding: 120px 70px 80px;
+    background-color: #fffaf7;
+}
+
+.galeria .titulo-seccion {
+    margin-bottom: 45px;
+}
+
+.galeria .titulo-seccion h2 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    color: #633c34;
+    margin-bottom: 12px;
+}
+
+.galeria .titulo-seccion p {
+    color: #9b7067;
+    font-size: 16px;
+}
+
+
+
+
+
+
+/* ================================
+   MOSAICO DE GALERÍA
+   ================================ */
+
+.galeria-mosaico {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    gap: 18px;
+}
+
+.galeria-foto {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background-color: #fce4e2;
+}
+
+.galeria-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.galeria-foto:hover img {
+    transform: scale(1.05);
+}
+
+.foto-grande {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.galeria-texto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background-color: rgba(80, 45, 40, 0.65);
+    color: white;
+    font-size: 17px;
+    text-align: center;
+}
+
+
+
+
+
+/* ================================
+   CONTACTO
+   ================================ */
+
+.contacto {
+    padding: 100px 70px;
+    background-color: #fce9e5;
+}
+
+.contacto .titulo-seccion {
+    margin-bottom: 50px;
+}
+
+.contacto-contenedor {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.contacto-info,
+.contacto-formulario {
+    background-color: white;
+    padding: 35px;
+    border-radius: 22px;
+    box-shadow: 0 10px 25px rgba(120, 70, 60, 0.10);
+}
+
+.contacto-info h3,
+.contacto-formulario h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: #633c34;
+    margin-bottom: 18px;
+}
+
+.contacto-info > p {
+    color: #76574f;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.dato-contacto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+.dato-contacto span {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #9b7067;
+}
+
+.dato-contacto strong {
+    margin-top: 4px;
+    color: #633c34;
+    font-size: 15px;
+}
+
+.contacto-formulario input,
+.contacto-formulario textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 15px;
+    border: 1px solid #efd6d0;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+    background-color: #fffaf7;
+}
+
+.contacto-formulario textarea {
+    height: 120px;
+    resize: none;
+}
+
+.contacto-formulario input:focus,
+.contacto-formulario textarea:focus {
+    border-color: #d9798c;
+}
+
+.contacto-formulario button {
+    width: 100%;
+}
+
+
+
+
+/* ================================
+   BOTÓN DEL CARRITO
+   ================================ */
+
+.carrito-boton {
+    background-color: #b96b68;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-boton:hover {
+    background-color: #96534f;
+}
+
+#contador-carrito {
+    font-weight: bold;
+}
+
+
+
+/* ================================
+   PANEL DEL CARRITO
+   ================================ */
+
+.carrito-panel {
+    display: none;
+}
+
+
+
+/* ================================
+   VENTANA DEL CARRITO
+   ================================ */
+
+.carrito-panel {
+    position: fixed;
+    top: 90px;
+    right: 70px;
+    width: 320px;
+    max-height: 520px;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #efd6d0;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(120, 70, 60, 0.18);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.carrito-panel h2 {
+    font-family: Georgia, serif;
+    color: #633c34;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#carrito-productos {
+    color: #76574f;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.carrito-total {
+    margin-top: 20px;
+    padding: 18px 0 5px;
+    border-top: 1px solid #efd6d0;
+    color: #633c34;
+    font-weight: bold;
+    font-size: 17px;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    z-index: 20;
+}
+
+/* ================================
+   BOTÓN REALIZAR PEDIDO
+   ================================ */
+
+.boton-pedido {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #d9798c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.boton-pedido:hover {
+    background-color: #b96b68;
+}
+
+/* ================================
+   FORMULARIO DEL PEDIDO
+================================ */
+
+.pedido-panel {
+    display: none;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 450px;
+    height: 80vh;
+
+    padding: 35px;
+
+    background-color: #fffaf7;
+    border: 1px solid #efd6d0;
+    border-radius: 22px;
+
+    box-shadow: 0 20px 50px rgba(80, 45, 40, 0.25);
+
+    z-index: 2000;
+
+    overflow-y: auto;
+}
+
+.pedido-panel h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: #633c34;
+    margin-bottom: 20px;
+}
+
+.pedido-panel h3 {
+    color: #7b4035;
+    margin: 25px 0 15px;
+}
+
+.pedido-panel input,
+.pedido-panel textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #efd6d0;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.pedido-panel textarea {
+    height: 100px;
+    resize: none;
+}
+
+.pedido-panel > button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* ================================
+   RESUMEN DEL PEDIDO
+   ================================ */
+
+#resumen-pedido {
+    padding: 18px;
+    margin-bottom: 20px;
+    background-color: #fce9e5;
+    border-radius: 15px;
+}
+
+#resumen-pedido p {
+    margin: 0 0 15px;
+    color: #76574f;
+    line-height: 1.6;
+}
+
+#resumen-pedido p:last-child {
+    margin-bottom: 0;
+    padding-top: 15px;
+    border-top: 1px solid #e8c1bd;
+    color: #633c34;
+    font-size: 18px;
+}
+
+.pedido-panel h3 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #633c34;
+}
+
+/* ================================
+   DISEÑO DEL RESUMEN DEL PEDIDO
+   ================================ */
+
+#resumen-pedido {
+    padding: 18px;
+    margin-bottom: 20px;
+    background-color: #fce9e5;
+    border-radius: 15px;
+}
+
+#resumen-pedido p {
+    margin-bottom: 15px;
+    color: #76574f;
+    line-height: 1.6;
+}
+
+#resumen-pedido p:last-child {
+    margin-bottom: 0;
+    padding-top: 15px;
+    border-top: 1px solid #e8c1bd;
+    color: #633c34;
+    font-size: 18px;
+}
+
+.pedido-panel h3 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #633c34;
+}
+
+
+/* ================================
+   FONDO DEL CARRITO
+   ================================ */
+
+.fondo-carrito {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(217, 121, 140, 0.45);
+    z-index: 900;
+}
+
+
+/* ================================
+   CERRAR CARRITO
+   ================================ */
+
+.cerrar-carrito {
+    position: sticky;
+    top: 0;
+    float: right;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    background-color: #fce9e5;
+    color: #633c34;
+    font-size: 18px;
+    line-height: 32px;
+    z-index: 10;
+}
+
+.cerrar-carrito:hover {
+    background-color: #d9798c;
+    color: white;
+}
+
+
+/* ================================
+   CERRAR PEDIDO
+   ================================ */
+
+.cerrar-pedido {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #fce4e2;
+    color: #633c34;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cerrar-pedido:hover {
+    background-color: #d9798c;
+    color: white;
+}
+
+/* CORRECCIÓN DE LA X DEL PEDIDO */
+
+.pedido-panel .cerrar-pedido {
+    position: sticky;
+    top: 0;
+    float: right;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 0 10px 10px !important;
+    padding: 0 !important;
+    border: none;
+    border-radius: 50%;
+    background-color: #fce4e2;
+    color: #633c34;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.pedido-panel .cerrar-pedido:hover {
+    background-color: #d9798c;
+    color: white;
+}
+
+/* ================================
+   CARRITO FIJO Y ORDENADO
+================================ */
+
+.carrito-panel {
+    position: fixed !important;
+    top: 90px;
+    right: 70px;
+    width: 320px;
+    height: calc(100vh - 120px);
+    max-height: none;
+    padding: 25px;
+    background-color: white;
+    border: 1px solid #efd6d0;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(120, 70, 60, 0.18);
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+}
+
+/* Título y X se quedan arriba */
+.carrito-panel h2 {
+    flex-shrink: 0;
+}
+
+/* Solamente los productos se deslizan */
+#carrito-productos {
+    height: calc(100% - 150px);
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Total siempre queda abajo */
+.carrito-total {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    margin: 0;
+    padding: 18px 0 5px;
+    border-top: 1px solid #efd6d0;
+    background-color: white;
+    z-index: 20;
+}
+
+/* X siempre visible */
+.carrito-panel .cerrar-carrito {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 30;
+}
+
+
+/* ================================
+   VENTANA DE REALIZAR PEDIDO FIJA
+================================ */
+
+.pedido-panel {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 80vh;
+    max-height: 80vh;
+    padding: 35px;
+    background-color: #fffaf7;
+    border: 1px solid #efd6d0;
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(80, 45, 40, 0.25);
+    z-index: 2000;
+    overflow-y: auto;
+}
+/* ================================
+   REALIZAR PEDIDO - VENTANA FIJA
+================================ */
+
+#pedido-panel {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    width: 450px;
+    height: 80vh;
+    max-height: 80vh;
+
+    padding: 35px;
+    background-color: #fffaf7;
+
+    border: 1px solid #efd6d0;
+    border-radius: 22px;
+
+    box-shadow: 0 20px 50px rgba(80, 45, 40, 0.25);
+
+    z-index: 2000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* ================================
+   CABECERA FIJA DEL PEDIDO
+================================ */
+
+.cabecera-pedido {
+    position: sticky;
+    top: -35px;
+    z-index: 50;
+
+    background-color: #fffaf7;
+
+    padding-top: 35px;
+    padding-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cabecera-pedido h2 {
+    margin: 0;
+}
+
+.cabecera-pedido .cerrar-pedido {
+    position: static !important;
+
+    flex-shrink: 0;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-radius: 50%;
+    background-color: #fce4e2;
+    color: #633c34;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.cabecera-pedido .cerrar-pedido:hover {
+    background-color: #d9798c;
+    color: white;
+}
+
+
+.redes-sociales {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 30px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.redes-sociales a {
+    text-decoration: none;
+    color: #fffaf7 !important;
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-flex !important;
+    align-items: center;
+    white-space: nowrap;
+    line-height: normal;
+}
+    
+.redes-sociales a:hover {
+    color: #f7c5cf !important;
+}
+
+
+
+.categoria-producto {
+    cursor: pointer;
+}
+
+.categoria-producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.boton-regresar {
+    margin-bottom: 25px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f7c5cf;
+    color: #5a3830;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#titulo-categoria {
+    margin-bottom: 25px;
+}

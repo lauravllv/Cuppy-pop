@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuppy pop</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo de Cuppy pop">
+        </div>
+
+        <nav>
+            
+    <a href="#" onclick="mostrarSeccion('inicio')">Inicio</a>
+    <a href="#" onclick="mostrarSeccion('productos')">Productos</a>
+    <a href="#" onclick="mostrarSeccion('nosotros')">Nosotros</a>
+    <a href="#" onclick="mostrarSeccion('galeria')">Galería</a>
+    <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+        </nav>
+
+
+<div class="carrito-boton" onclick="mostrarCarrito()">
+    🛒 Carrito (<span id="contador-carrito">0</span>)
+</div>
+<div id="fondo-carrito" class="fondo-carrito"></div>
+<div id="carrito-panel" class="carrito-panel">
+<button class="cerrar-carrito" onclick="cerrarCarrito()">
+    ✕
+</button>
+
+    <h2>🛒 Tu carrito</h2>
+
+    <div id="carrito-productos">
+        <p>Tu carrito está vacío.</p>
+    </div>
+
+    <div class="carrito-total">
+
+    <div>
+        Total: $<span id="carrito-total">0</span>
+    </div>
+
+    <button class="boton-pedido" onclick="mostrarPedido()">
+        Realizar pedido 🛍️
+    </button>
+
+</div>
+
+</div>
+<div id="pedido-panel" class="pedido-panel">
+<div class="cabecera-pedido">
+
+    <h2>🛍️ Realizar pedido</h2>
+
+    <button class="cerrar-pedido" onclick="cerrarPedido()">
+        ✕
+    </button>
+
+</div>
+    <div id="resumen-pedido">
+        <p>Tu pedido aparecerá aquí.</p>
+    </div>
+
+
+<h3>Datos de entrega</h3>
+
+<input
+    type="text"
+    id="nombre-pedido"
+    placeholder="Tu nombre"
+>
+
+<input
+    type="tel"
+    id="telefono-pedido"
+    placeholder="Tu teléfono"
+>
+
+<input
+    type="text"
+    id="direccion-pedido"
+    placeholder="Tu dirección"
+>
+
+<textarea
+    id="mensaje-pedido"
+    placeholder="Alguna indicación especial"
+></textarea>
+
+
+<h3>🏦 Método de pago</h3>
+
+<p>Transferencia bancaria</p>
+
+<p>También puedes pagar de forma segura con Mercado Pago:</p>
+
+<button type="button" onclick="pagarConMercadoPago()">
+    Pagar con Mercado Pago 💳
+</button>
+
+
+<div id="datos-transferencia">
+
+    <h3>Datos para transferencia</h3>
+
+    <p>
+        <strong>Banco:</strong>
+        BBVA 
+    </p>
+
+    <p>
+        <strong>Titular:</strong>
+        Laura Guadalupe Victoriano Santos
+    </p>
+
+    <p>
+        <strong>CLABE:</strong>
+       012180015640551139
+    </p>
+
+    <p>
+        Realiza tu transferencia y conserva tu comprobante.
+    </p>
+
+    <input
+        type="text"
+        id="referencia-transferencia"
+        placeholder="Referencia de transferencia"
+    >
+
+</div>
+
+<button onclick="confirmarPedido()">
+    Confirmar pedido 💗
+</button>
+
+</div>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <!-- INICIO -->
+        <section class="inicio" id="inicio">
+
+            <div class="texto-inicio">
+
+                <p class="subtitulo">
+                    REPOSTERÍA ARTESANAL
+                </p>
+
+                <h1>
+                    Un momento dulce
+                    empieza con
+                    <span>Cuppy pop.</span>
+                </h1>
+
+                <p>
+                    Galletas, pasteles y postres preparados
+                    con mucho cariño para hacer especial
+                    cualquier momento.
+                </p>
+
+                <button onclick="mostrarSeccion('productos')">
+    Ver productos
+</button>
+
+            </div>
+
+            <div class="imagen-inicio">
+                <img src="img/galleta.png" alt="Pastel de Cuppy pop">
+            </div>
+
+
+
+
+
+<!-- CARRUSEL DE IMÁGENES -->
+<section class="carrusel">
+
+    <div class="titulo-seccion">
+
+        <p class="subtitulo">
+            CONOCE NUESTROS POSTRES
+        </p>
+
+        <h2>
+            Un pop de dulzura
+        </h2>
+
+        <p>
+            Algunos de nuestros favoritos ♡
+        </p>
+
+    </div>
+
+
+    <div class="carrusel-contenedor">
+
+        <button class="flecha anterior" onclick="cambiarImagen(-1)">
+            ‹
+        </button>
+
+
+        <div class="carrusel-imagen">
+
+            <img id="imagenCarrusel"
+     src="img/cupcakeschocolate.png"
+     alt="Postres de Cuppy pop">
+
+        </div>
+
+
+        <button class="flecha siguiente" onclick="cambiarImagen(1)">
+            ›
+        </button>
+
+    </div>
+
+
+    <div class="indicadores">
+
+        <span class="punto activo" onclick="mostrarImagen(0)"></span>
+        <span class="punto" onclick="mostrarImagen(1)"></span>
+        <span class="punto" onclick="mostrarImagen(2)"></span>
+        <span class="punto" onclick="mostrarImagen(3)"></span>
+        <span class="punto" onclick="mostrarImagen(4)"></span>
+
+    </div>
+
+</section>
+<!-- PARALLAX -->
+<section class="parallax">
+
+    <div class="parallax-contenido">
+
+        <p>
+            UN MOMENTO DULCE
+        </p>
+
+        <h2>
+            Hecho con cariño para ti ♡
+        </h2>
+
+        <span>
+            Descubre el sabor de Cuppy pop
+        </span>
+
+    </div>
+
+</section>
+
+        </section> 
+
+
+
+
+
+
+
+
+<!-- PRODUCTOS -->
+<section class="productos" id="productos">
+
+    <div class="titulo-seccion">
+        <h2>Nuestros productos</h2>
+        <p>Elige una categoría para conocer nuestros productos ♡</p>
+    </div>
+
+    <!-- CATEGORÍAS -->
+    <div class="productos-contenedor" id="categorias-productos">
+
+        <div class="producto categoria-producto" onclick="mostrarCategoria('galletas')">
+            <div class="producto-imagen">
+                <img src="img/galletaproductos.png" alt="Galletas">
+            </div>
+
+            <h3>Galletas</h3>
+            <p>Galletas caseras y deliciosas.</p>
+        </div>
+
+
+        <div class="producto categoria-producto" onclick="mostrarCategoria('cupcakes')">
+            <div class="producto-imagen">
+                <img src="img/cupcakevainilla.png" alt="Cupcakes">
+            </div>
+
+            <h3>Cupcakes</h3>
+            <p>Descubre nuestros cupcakes.</p>
+        </div>
+
+
+        <div class="producto categoria-producto" onclick="mostrarCategoria('pan')">
+            <div class="producto-imagen">
+                <img src="img/panproductos.png" alt="Pan">
+            </div>
+
+            <h3>Pan</h3>
+            <p>Pan dulce recién preparado.</p>
+        </div>
+
+
+        <div class="producto categoria-producto" onclick="mostrarCategoria('croissant')">
+            <div class="producto-imagen">
+                <img src="img/croissantproductos.png" alt="Croissant">
+            </div>
+
+            <h3>Croissant</h3>
+            <p>Suaves y deliciosos croissants.</p>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCTOS DE CADA CATEGORÍA -->
+
+    <div id="detalle-productos" style="display:none;">
+
+        <button class="boton-regresar" onclick="volverCategorias()">
+            ← Volver a categorías
+        </button>
+
+        <h2 id="titulo-categoria"></h2>
+
+        <div class="productos-contenedor" id="lista-productos">
+        </div>
+
+    </div>
+
+</section>
+<!-- NOSOTROS -->
+<section class="nosotros" id="nosotros">
+
+    <!-- PARALLAX DE NOSOTROS -->
+    <div class="parallax-nosotros">
+
+        <div class="parallax-nosotros-contenido">
+
+            <p>
+                CONÓCENOS
+            </p>
+
+            <h2>
+                Hecho con cariño,<br>
+                pensado para ti ♡
+            </h2>
+
+            <span>
+                En Cuppy pop nos encanta convertir
+                pequeños momentos en recuerdos dulces.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- LO QUE NOS REPRESENTA -->
+    <div class="valores-nosotros">
+
+        <div class="valor">
+
+            <span>🍪</span>
+
+            <h3>
+                Hecho con cariño
+            </h3>
+
+            <p>
+                Cada postre es preparado cuidando
+                cada pequeño detalle.
+            </p>
+
+        </div>
+
+
+        <div class="valor">
+
+            <span>✨</span>
+
+            <h3>
+                Cuidamos cada detalle
+            </h3>
+
+            <p>
+                Buscamos que nuestros productos
+                sean bonitos y deliciosos.
+            </p>
+
+        </div>
+
+
+        <div class="valor">
+
+            <span>🎀</span>
+
+            <h3>
+                Momentos especiales
+            </h3>
+
+            <p>
+                Creamos dulces para acompañar
+                tus momentos favoritos.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- GALERÍA -->
+<section class="galeria" id="galeria">
+
+    <div class="titulo-seccion">
+
+        <p class="subtitulo">
+            NUESTROS FAVORITOS
+        </p>
+
+        <h2>
+            Un vistazo a Cuppy pop
+        </h2>
+
+        <p>
+            Un poquito de lo que hacemos con mucho cariño ♡
+        </p>
+
+    </div>
+
+
+    <div class="galeria-mosaico">
+
+        <div class="galeria-foto foto-grande">
+
+            <img src="img/croissantt.png" alt="Croissant de Cuppy pop">
+
+            <div class="galeria-texto">
+                Croissant
+            </div>
+
+        </div>
+
+
+        <div class="galeria-foto">
+
+            <img src="img/galletita.png" alt="Galletas de Cuppy pop">
+
+            <div class="galeria-texto">
+                Galletas
+            </div>
+
+        </div>
+
+
+        <div class="galeria-foto">
+
+            <img src="img/cupcakeschocolate.png" alt="Cupcakes de chocolate de Cuppy pop">
+
+            <div class="galeria-texto">
+                Cupcakes de chocolate
+            </div>
+
+        </div>
+
+
+        <div class="galeria-foto">
+
+            <img src="img/pan.png" alt="Pan chocolate de Cuppy pop">
+
+            <div class="galeria-texto">
+                Pan chocolate
+            </div>
+
+        </div>
+
+
+        <div class="galeria-foto">
+
+            <img src="img/croissant.png" alt="Croissant de Cuppy pop">
+
+            <div class="galeria-texto">
+                Croissant
+            </div>
+
+        </div>
+
+
+        <div class="galeria-foto">
+
+            <img src="img/cupcakes.png" alt="Cupcakes de vainilla de Cuppy pop">
+
+            <div class="galeria-texto">
+                Cupcakes de vainilla
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <!-- CONTACTO -->
+<section class="contacto" id="contacto">
+
+    <div class="titulo-seccion">
+
+        <p class="subtitulo">
+            ¡HABLEMOS!
+        </p>
+
+        <h2>
+            Haz tu pedido ♡
+        </h2>
+
+        <p>
+            Estamos aquí para ayudarte a elegir algo dulce.
+        </p>
+
+    </div>
+
+
+    <div class="contacto-contenedor">
+
+        <div class="contacto-info">
+
+            <h3>
+                Ponte en contacto con nosotros
+            </h3>
+
+            <p>
+                Escríbenos para conocer nuestros productos,
+                hacer un pedido o preguntar por nuestros sabores
+                disponibles.
+            </p>
+
+            <div class="dato-contacto">
+                📱
+                <span>
+                    Teléfono
+                    <strong>55 1234 5678</strong>
+                </span>
+            </div>
+
+            <div class="dato-contacto">
+                ✉️
+                <span>
+                    Correo
+                    <strong>cuppypop@gmail.com</strong>
+                </span>
+            </div>
+
+            <div class="dato-contacto">
+                📍
+                <span>
+                    Ubicación
+                    <strong>Ciudad de México</strong>
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="contacto-formulario">
+
+            <h3>
+                Envíanos un mensaje
+            </h3>
+
+            <input type="text" id="nombre-contacto" placeholder="Tu nombre">
+
+<input type="email" id="correo-contacto" placeholder="Tu correo">
+
+<textarea id="mensaje-contacto" placeholder="Escribe tu mensaje"></textarea>
+
+            <button onclick="enviarMensaje()">
+    Enviar mensaje
+</button>
+        </div>
+
+    </div>
+
+</section>
+
+
+    </main>
+
+<!-- PIE DE PÁGINA -->
+<footer>
+
+    <div class="footer-logo">
+        Cuppy pop
+    </div>
+
+    <p>
+        Un pop de dulzura ♡
+    </p>
+
+    <p>
+        Galletas · Pasteles · Cupcakes · Brownies
+    </p>
+
+    <div class="redes-sociales">
+
+        <a href="https://www.instagram.com/cuppy.pop?stkn=MTF1cnVoYjgwbHB2ZQ%3D%3D&utm_source=qr" target="_blank">
+            📷 Instagram
+        </a>
+
+        <a href="https://www.facebook.com/share/19ZQKy65gw/?mibextid=wwXIfr" target="_blank">
+            📘 Facebook
+        </a>
+
+        <a href="https://www.tiktok.com/@cuppy.pop?_r=1&_t=ZS-99pPhvpUfGm" target="_blank">
+            ♪ TikTok
+        </a>
+
+    </div>
+
+    <p>
+        © 2026 Cuppy pop
+    </p>
+
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
