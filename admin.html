@@ -1,0 +1,289 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración | Cuppy pop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff1f1;
+            color: #603b32;
+        }
+
+        header {
+            background: #e9a6ad;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 4px solid #d28b91;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .bienvenida {
+            background: #fffaf7;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px #d9a4a455;
+        }
+
+        .resumen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin: 25px 0;
+        }
+
+        .tarjeta {
+            background: white;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 4px 12px #d9a4a433;
+        }
+
+        .tarjeta h3 {
+            margin-top: 0;
+        }
+
+        .numero {
+            font-size: 30px;
+            font-weight: bold;
+            color: #c56f7c;
+        }
+
+        .pedidos {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px #d9a4a433;
+        }
+
+        button {
+            background: #c56f7c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #a95764;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 13px;
+            border-bottom: 1px solid #f1d9d7;
+        }
+
+        th {
+            background: #fff1f1;
+        }
+
+        .aviso {
+            margin-top: 18px;
+            color: #8b6962;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🍪 Cuppy pop</h1>
+        <p>Panel de administración · Un pop de dulzura ♡</p>
+    </header>
+
+    <main>
+        <section class="bienvenida">
+            <h2>¡Hola! 💗</h2>
+            <p>Desde aquí podrás consultar los pedidos de tu tienda.</p>
+            <button type="button" onclick="cargarPedidos()">
+                Actualizar pedidos
+            </button>
+        </section>
+
+        <section class="resumen">
+            <div class="tarjeta">
+                <h3>Pedidos registrados</h3>
+                <div class="numero" id="total-pedidos">—</div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Pagos pendientes</h3>
+                <div class="numero" id="pagos-pendientes">—</div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Ventas confirmadas</h3>
+                <div class="numero" id="ventas-confirmadas">—</div>
+            </div>
+        </section>
+
+        <section class="pedidos">
+            <h2>📋 Pedidos recientes</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>N.º</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Estado del pedido</th>
+                        <th>Estado del pago</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lista-pedidos">
+                    <tr>
+                        <td colspan="6">
+                            Pulsa «Actualizar pedidos» cuando conectemos
+                            esta página con la base de datos.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="aviso" id="mensaje">
+                Esta página todavía no está conectada a la base de datos.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Cuppy pop · Un pop de dulzura ♡
+    </footer>
+
+    <script>
+        
+
+async function cargarPedidos() {
+    const mensaje = document.getElementById("mensaje");
+    const lista = document.getElementById("lista-pedidos");
+
+    mensaje.textContent = "Cargando pedidos...";
+    lista.innerHTML = "";
+
+    try {
+        const respuesta = await fetch("/api/pedidos");
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(datos.error || "No se pudieron consultar los pedidos.");
+        }
+
+        const pedidos = datos.pedidos || [];
+
+        document.getElementById("total-pedidos").textContent = pedidos.length;
+        document.getElementById("pagos-pendientes").textContent =
+            pedidos.filter(p => p.estado_pago === "pendiente").length;
+        document.getElementById("ventas-confirmadas").textContent =
+            pedidos
+                .filter(p => p.estado_pago === "aprobado")
+                .reduce((suma, p) => suma + Number(p.total || 0), 0);
+
+        if (pedidos.length === 0) {
+            lista.innerHTML = '<tr><td colspan="7">Todavía no hay pedidos.</td></tr>';
+        } else {
+            pedidos.forEach(p => {
+                const fila = document.createElement("tr");
+
+                [
+                    p.id,
+                    p.nombre,
+                    p.fecha,
+                    "$" + p.total,
+                    p.estado_pedido,
+                    p.estado_pago
+                ].forEach(valor => {
+                    const celda = document.createElement("td");
+                    celda.textContent = valor ?? "";
+                    fila.appendChild(celda);
+                });
+
+                const celdaDetalles = document.createElement("td");
+                const boton = document.createElement("button");
+                boton.textContent = "Ver detalles";
+
+                boton.onclick = () => {
+                    let productos = p.productos || "Sin información de productos";
+
+                    try {
+                        if (typeof productos === "string") {
+                            productos = JSON.parse(productos);
+                        }
+
+                        if (Array.isArray(productos)) {
+                            productos = productos.map(producto =>
+                                `${producto.nombre || producto.title || "Producto"} x${producto.cantidad || producto.quantity || 1}`
+                            ).join("\n");
+                        }
+                    } catch {
+                        productos = String(productos);
+                    }
+
+                    alert(
+                        "PEDIDO #" + p.id +
+                        "\n\nCliente: " + (p.nombre || "") +
+                        "\nTeléfono: " + (p.telefono || "") +
+                        "\nDirección: " + (p.direccion || "") +
+                        "\nIndicaciones: " + (p.indicaciones || "Ninguna") +
+                        "\n\nProductos:\n" + productos +
+                        "\n\nTotal: $" + p.total +
+                        "\nMétodo de pago: " + (p.metodo_pago || "") +
+                        "\nEstado del pedido: " + (p.estado_pedido || "") +
+                        "\nEstado del pago: " + (p.estado_pago || "")
+                    );
+                };
+
+                celdaDetalles.appendChild(boton);
+                fila.appendChild(celdaDetalles);
+                lista.appendChild(fila);
+            });
+        }
+
+        mensaje.textContent = "Pedidos actualizados correctamente.";
+    } catch (error) {
+        mensaje.textContent = "No se pudieron cargar los pedidos: " + error.message;
+    }
+}
+
+    </script>
+</body>
+</html>
