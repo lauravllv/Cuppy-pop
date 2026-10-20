@@ -2,8 +2,9 @@
 // CAMBIO DE APARTADOS
 // ================================
 
+
 function mostrarSeccion(seccion) {
- const secciones = document.querySelectorAll("main > section");
+    const secciones = document.querySelectorAll("main > section");
 
     secciones.forEach(function(elemento) {
         elemento.style.display = "none";
@@ -13,8 +14,21 @@ function mostrarSeccion(seccion) {
 
     if (seleccionada) {
         seleccionada.style.display = "block";
+
+        if (seccion !== "inicio") {
+            window.scrollTo({
+                top: seleccionada.getBoundingClientRect().top + window.scrollY - 150,
+                behavior: "smooth"
+            });
+        } else {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
     }
 }
+
 
 function mostrarCategoria(categoria) {
 
