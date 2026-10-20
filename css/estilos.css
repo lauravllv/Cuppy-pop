@@ -2113,12 +2113,3 @@ body.carrito-abierto {
 
 
 
-
-@media (max-width: 768px) {
-    #productos,
-    #nosotros,
-    #galeria,
-    #contacto {
-        scroll-margin-top: 100px;
-    }
-}
