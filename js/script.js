@@ -325,6 +325,7 @@ function eliminarProducto(indice) {
 
 
 
+
 function mostrarCarrito() {
     const panel = document.getElementById("carrito-panel");
     const fondo = document.getElementById("fondo-carrito");
@@ -334,8 +335,11 @@ function mostrarCarrito() {
     panel.style.display = "block";
     fondo.style.display = "block";
 
-    document.body.classList.add("carrito-abierto");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${window.scrollAnterior}px`;
+    document.body.style.width = "100%";
 }
+
 
     
 
@@ -348,8 +352,11 @@ function cerrarCarrito() {
     panel.style.display = "none";
     fondo.style.display = "none";
     pedido.style.display = "none";
- window.scrollTo(0, window.scrollAnterior || 0);
- document.body.classList.remove("carrito-abierto");
+ document.body.style.position = "";
+document.body.style.top = "";
+document.body.style.width = "";
+
+window.scrollTo(0, window.scrollAnterior || 0);
 }
 function mostrarPedido() {
 
