@@ -2112,4 +2112,11 @@ body.carrito-abierto {
 
 
 
+@media (max-width: 768px) {
+    main > section:not(#inicio) {
+        padding-top: 150px !important;
+        box-sizing: border-box;
+    }
+}
+
 
