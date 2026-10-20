@@ -2113,7 +2113,7 @@ body.carrito-abierto {
 
 
 @media (max-width: 768px) {
-    main > section:not(#inicio) {
+    main > section:not(#productos) {
         padding-top: 150px !important;
         box-sizing: border-box;
     }
