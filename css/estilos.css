@@ -2012,25 +2012,61 @@ body.carrito-abierto {
     }
 }
 
+
+/* Ajuste del encabezado fijo en celulares */
 @media (max-width: 768px) {
     header {
         position: fixed !important;
         top: 0 !important;
-        left: 0;
-        right: 0;
-        width: 100%;
-        z-index: 2000;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 2000 !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px;
+        padding: 8px 12px !important;
+        box-sizing: border-box;
     }
 
-   body {
-    padding-top: 0;
+    .logo {
+        margin: 0 !important;
+    }
+
+    .logo img {
+        width: 48px !important;
+        height: auto;
+    }
+
+    .carrito-boton {
+        margin-left: auto !important;
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+    }
+
+    header nav {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: center !important;
+        gap: 8px 14px !important;
+    }
+
+    header nav a {
+        font-size: 13px !important;
+    }
+
+    /* Dejar espacio para que el menú no tape el inicio */
+    .inicio {
+        padding-top: 35px !important;
+    }
 }
 
-.inicio {
-    padding-top: 180px;
-}
-}
-}
 
 
 
