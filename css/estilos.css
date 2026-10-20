@@ -2114,28 +2114,28 @@ body.carrito-abierto {
 
 @media (max-width: 768px) {
     main > section:not(#productos) {
-        padding-top: 110px !important;
+        padding-top: 100px !important;
         box-sizing: border-box;
     }
 }
 
 @media (max-width: 768px) {
     main > section:not(#nosotros) {
-        padding-top: 110px !important;
+        padding-top: 100px !important;
         box-sizing: border-box;
     }
 }
 
 @media (max-width: 768px) {
     main > section:not(#galeria) {
-        padding-top: 110px !important;
+        padding-top: 100px !important;
         box-sizing: border-box;
     }
 }
 
 @media (max-width: 768px) {
     main > section:not(#contacto) {
-        padding-top: 110px !important;
+        padding-top: 100px !important;
         box-sizing: border-box;
     }
 }
