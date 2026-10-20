@@ -372,6 +372,8 @@ fondoCarrito.style.display = "none";
         resumen.innerHTML = "<p>No tienes productos en tu carrito.</p>";
 
         pedido.style.display = "block";
+     carritoPanel.style.display = "none";
+fondoCarrito.style.display = "none";
 
         return;
     }
