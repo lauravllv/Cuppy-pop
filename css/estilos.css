@@ -1789,3 +1789,71 @@ img {
         height: 190px;
     }
 }
+
+/* PRECIO ARRIBA Y BOTÓN ABAJO */
+.producto strong {
+    display: block;
+    margin: 0 0 12px;
+    text-align: center;
+}
+
+.producto button,
+.producto .carrito-boton {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.producto {
+    min-width: 0;
+}
+
+/* CARRITO LATERAL EN CELULARES */
+@media (max-width: 600px) {
+    .carrito-panel {
+        top: 10px !important;
+        left: auto !important;
+        right: 10px !important;
+        width: min(340px, calc(100vw - 20px)) !important;
+        height: calc(100dvh - 20px) !important;
+        max-height: none !important;
+        transform: none !important;
+        z-index: 3000;
+    }
+}
+
+/* PARALLAX COMPATIBLE CON IPHONE */
+@media (max-width: 900px) {
+    .parallax,
+    .parallax-nosotros {
+        background-attachment: scroll !important;
+        background-position: center center;
+        background-size: cover;
+    }
+}
+
+.parallax {
+    width: 100%;
+    min-height: 420px;
+}
+
+.parallax-nosotros {
+    width: 100%;
+    min-height: 450px;
+}
+
+@media (max-width: 600px) {
+    .parallax {
+        min-height: 340px;
+    }
+
+    .parallax-nosotros {
+        min-height: 340px;
+    }
+
+    .parallax-contenido h2,
+    .parallax-nosotros-contenido h2 {
+        font-size: 30px;
+    }
+}
