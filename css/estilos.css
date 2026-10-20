@@ -2003,3 +2003,11 @@ body.carrito-abierto {
     overscroll-behavior-y: contain;
     touch-action: pan-y;
 }
+
+@media (max-width: 768px) {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+}
