@@ -341,7 +341,6 @@ function mostrarCarrito() {
 }
 
 function cerrarCarrito() {
-
     const panel = document.getElementById("carrito-panel");
     const fondo = document.getElementById("fondo-carrito");
     const pedido = document.getElementById("pedido-panel");
@@ -350,7 +349,12 @@ function cerrarCarrito() {
     fondo.style.display = "none";
     pedido.style.display = "none";
 
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
     document.body.style.overflow = "";
+
+    window.scrollTo(0, window.scrollAnterior || 0);
 }
 function mostrarPedido() {
 
