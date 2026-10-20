@@ -2011,3 +2011,15 @@ body.carrito-abierto {
         z-index: 1000;
     }
 }
+
+@media (max-width: 768px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 2000;
+    }
+}
+
