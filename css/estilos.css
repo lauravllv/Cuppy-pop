@@ -1973,3 +1973,8 @@ html.modal-abierto {
         z-index: 3000 !important;
     }
 }
+body.carrito-abierto {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+}
