@@ -1952,3 +1952,24 @@ html.modal-abierto {
         z-index: 3000 !important;
     }
 }
+
+
+/* POSICIÓN DEL CARRITO EN CELULARES */
+@media screen and (max-width: 600px) {
+    #carrito-panel {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        bottom: 10px !important;
+        width: 300px !important;
+        max-width: calc(100vw - 20px) !important;
+        height: auto !important;
+        max-height: calc(100dvh - 20px) !important;
+        margin: 0 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+        z-index: 3000 !important;
+    }
+}
