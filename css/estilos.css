@@ -2069,5 +2069,46 @@ body.carrito-abierto {
 }
 
 
+@media (max-width: 768px) {
+    header {
+        display: grid !important;
+        grid-template-columns: 1fr auto !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 10px 14px !important;
+    }
+
+    .logo {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: start;
+    }
+
+    .logo img {
+        width: 48px !important;
+        height: auto !important;
+    }
+
+    .carrito-boton {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        margin: 0 !important;
+        padding: 10px 14px !important;
+        font-size: 13px !important;
+        white-space: nowrap;
+    }
+
+    header nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center !important;
+        gap: 8px 14px !important;
+    }
+}
+
 
 
