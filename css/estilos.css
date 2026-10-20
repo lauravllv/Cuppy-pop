@@ -1946,3 +1946,23 @@ html.modal-abierto {
         z-index: 3000 !important;
     }
 }
+/* CORRECCIÓN FINAL: CARRITO A LA DERECHA */
+@media (max-width: 600px) {
+    #carrito-panel {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        bottom: 10px !important;
+
+        width: calc(100% - 20px) !important;
+        max-width: 360px !important;
+        height: auto !important;
+        max-height: none !important;
+
+        margin: 0 !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+        z-index: 3000 !important;
+    }
+}
