@@ -326,23 +326,19 @@ function eliminarProducto(indice) {
 
 
 function mostrarCarrito() {
-
     const panel = document.getElementById("carrito-panel");
     const fondo = document.getElementById("fondo-carrito");
 
-    if (panel.style.display === "block") {
+    window.scrollAnterior = window.scrollY;
 
-        cerrarCarrito();
+    panel.style.display = "block";
+    fondo.style.display = "block";
 
-    } else {
-
-        panel.style.display = "block";
-        fondo.style.display = "block";
-
-        document.body.style.overflow = "hidden";
-    }
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${window.scrollAnterior}px`;
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
 }
-
 
 function cerrarCarrito() {
 
