@@ -1857,3 +1857,56 @@ img {
         font-size: 30px;
     }
 }
+
+/* CORRECCIÓN DE VENTANAS EN CELULAR */
+@media (max-width: 600px) {
+
+    /* Carrito: ventana lateral derecha */
+    .carrito-panel {
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        bottom: 10px !important;
+        width: min(340px, calc(100vw - 20px)) !important;
+        height: auto !important;
+        max-height: none !important;
+        transform: none !important;
+        z-index: 1000 !important;
+    }
+
+    /* Pedido: debe quedar delante del carrito */
+    .pedido-panel,
+    #pedido-panel {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        left: 10px !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        transform: none !important;
+        z-index: 2100 !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fondo oscuro/rosado de las ventanas */
+    .fondo-carrito {
+        position: fixed !important;
+        inset: 0 !important;
+        z-index: 900 !important;
+    }
+}
+
+/* Bloqueo del desplazamiento cuando se abre una ventana */
+body.modal-abierto {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+}
+
+html.modal-abierto {
+    overflow: hidden !important;
+    overscroll-behavior: none;
+}
