@@ -2063,7 +2063,8 @@ body.carrito-abierto {
 
     /* Dejar espacio para que el menú no tape el inicio */
     .inicio {
-        padding-top: 35px !important;
+    padding-top: 100px !important;
+
     }
 }
 
