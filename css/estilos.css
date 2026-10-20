@@ -1347,3 +1347,445 @@ footer {
 #titulo-categoria {
     margin-bottom: 25px;
 }
+
+
+/* ========================================
+   RESPONSIVIDAD CUPPY POP
+   ======================================== */
+
+/* Evitar desbordamientos horizontales */
+html {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+
+    header {
+        padding: 15px 25px;
+        gap: 15px;
+    }
+
+    .logo img {
+        width: 65px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .inicio {
+        padding: 55px 30px;
+    }
+
+    .inicio .texto-inicio {
+        width: 52%;
+    }
+
+    .inicio .imagen-inicio {
+        width: 42%;
+    }
+
+    .texto-inicio h1 {
+        font-size: 38px;
+    }
+
+    .imagen-inicio {
+        height: 280px;
+    }
+
+    .imagen-inicio img {
+        width: 85%;
+        height: 85%;
+    }
+
+    .productos,
+    .carrusel,
+    .nosotros,
+    .galeria,
+    .contacto {
+        padding: 65px 30px;
+    }
+
+    .productos-contenedor {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .valores-nosotros {
+        flex-wrap: wrap;
+    }
+
+    .contacto-contenedor {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .contacto-info,
+    .contacto-formulario {
+        padding: 25px;
+    }
+
+    .galeria-mosaico {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .carrusel-contenedor {
+        width: 100%;
+        height: auto;
+        gap: 12px;
+    }
+
+    .carrusel-imagen {
+        width: 100%;
+        height: 300px;
+        min-width: 0;
+    }
+
+    .carrito-panel {
+        right: 20px;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    body {
+        padding-top: 0;
+    }
+
+    header {
+        position: relative;
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo img {
+        width: 65px;
+    }
+
+    nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 18px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .carrito-boton {
+        max-width: 100%;
+    }
+
+    .inicio {
+        min-height: auto;
+        padding: 45px 22px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .inicio .texto-inicio,
+    .inicio .imagen-inicio {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .texto-inicio h1 {
+        font-size: clamp(30px, 8vw, 40px);
+    }
+
+    .texto-inicio > p:not(.subtitulo) {
+        font-size: 16px;
+    }
+
+    .imagen-inicio {
+        width: min(280px, 85vw);
+        height: auto;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        display: flex;
+    }
+
+    .imagen-inicio img {
+        width: 82%;
+        height: 82%;
+    }
+
+    .productos,
+    .carrusel,
+    .nosotros,
+    .galeria,
+    .contacto {
+        padding: 50px 18px;
+    }
+
+    .titulo-seccion {
+        margin-bottom: 30px;
+    }
+
+    .titulo-seccion h2,
+    .galeria .titulo-seccion h2 {
+        font-size: 29px;
+    }
+
+    .titulo-seccion p,
+    .galeria .titulo-seccion p {
+        font-size: 14px;
+    }
+
+    .productos-contenedor {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .producto {
+        padding: 22px;
+    }
+
+    .producto-imagen {
+        width: 125px;
+        height: 125px;
+    }
+
+    .parallax,
+    .parallax-nosotros {
+        min-height: 300px;
+        background-attachment: scroll;
+    }
+
+    .parallax-contenido,
+    .parallax-nosotros-contenido {
+        padding: 25px 18px;
+    }
+
+    .parallax-contenido h2,
+    .parallax-nosotros-contenido h2 {
+        font-size: 30px;
+    }
+
+    .parallax-contenido span,
+    .parallax-nosotros-contenido span {
+        font-size: 16px;
+    }
+
+    .parallax-contenido p,
+    .parallax-nosotros-contenido p {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .imagen-nosotros img {
+        width: 100%;
+        height: auto;
+    }
+
+    .valores-nosotros {
+        margin-top: 35px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .valor {
+        width: 100%;
+    }
+
+    .galeria-mosaico {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: 220px;
+        gap: 15px;
+    }
+
+    .foto-grande {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .galeria-texto {
+        font-size: 15px;
+    }
+
+    .contacto-contenedor {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .contacto-info,
+    .contacto-formulario {
+        padding: 22px;
+        min-width: 0;
+    }
+
+    .dato-contacto {
+        font-size: 21px;
+        gap: 10px;
+    }
+
+    .dato-contacto strong {
+        overflow-wrap: anywhere;
+    }
+
+    .redes-sociales {
+        flex-wrap: wrap;
+        gap: 15px 22px;
+    }
+
+    .redes-sociales a {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    /* Carrusel */
+    .carrusel-contenedor {
+        gap: 8px;
+        margin: 25px auto 15px;
+    }
+
+    .carrusel-imagen {
+        height: 230px;
+        border-radius: 15px;
+    }
+
+    .flecha {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    /* Carrito */
+    .carrito-panel {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        height: calc(100dvh - 20px);
+        max-height: none;
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    #carrito-productos {
+        height: calc(100% - 150px);
+        overflow-y: auto;
+    }
+
+    .carrito-total {
+        left: 22px;
+        right: 22px;
+        bottom: 20px;
+    }
+
+    /* Formulario del pedido */
+    .pedido-panel,
+    #pedido-panel {
+        top: 10px !important;
+        left: 10px !important;
+        width: calc(100% - 20px) !important;
+        height: calc(100dvh - 20px) !important;
+        max-height: calc(100dvh - 20px) !important;
+        padding: 20px !important;
+        transform: none !important;
+        border-radius: 18px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .pedido-panel h2,
+    #pedido-panel h2 {
+        font-size: 25px;
+    }
+
+    .cabecera-pedido {
+        top: -20px;
+        padding-top: 20px;
+        gap: 10px;
+    }
+
+    .cabecera-pedido h2 {
+        font-size: 23px;
+    }
+
+    .cabecera-pedido .cerrar-pedido {
+        flex-shrink: 0;
+    }
+
+    .pedido-panel input,
+    .pedido-panel textarea,
+    #pedido-panel input,
+    #pedido-panel textarea {
+        font-size: 16px;
+    }
+
+    /* Botones y campos */
+    button {
+        max-width: 100%;
+    }
+
+    input,
+    textarea,
+    select {
+        max-width: 100%;
+    }
+}
+
+/* CELULARES MUY PEQUEÑOS */
+@media (max-width: 360px) {
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .texto-inicio h1 {
+        font-size: 29px;
+    }
+
+    .productos,
+    .carrusel,
+    .nosotros,
+    .galeria,
+    .contacto {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .carrito-panel {
+        padding: 16px;
+    }
+
+    .pedido-panel,
+    #pedido-panel {
+        padding: 16px !important;
+    }
+
+    .carrusel-imagen {
+        height: 190px;
+    }
+}
