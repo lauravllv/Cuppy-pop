@@ -2022,9 +2022,13 @@ body.carrito-abierto {
         z-index: 2000;
     }
 
-    body {
-        padding-top: 140px;
-    }
+   body {
+    padding-top: 0;
+}
+
+.inicio {
+    padding-top: 180px;
+}
 }
 }
 
