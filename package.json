@@ -17,7 +17,7 @@
   "dependencies": {
     "dotenv": "^18.0.6",
     "express": "^5.2.1",
-    "mercadopago": "^3.6.1"
+    "mercadopago": "^3.6.1",
     "pg": "^8.16.3"
   }
 }
