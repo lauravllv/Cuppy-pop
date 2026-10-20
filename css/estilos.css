@@ -2112,3 +2112,11 @@ body.carrito-abierto {
 
 
 
+@media (max-width: 768px) {
+    .inicio {
+        padding-top: 40px !important;
+    }
+}
+
+
+
