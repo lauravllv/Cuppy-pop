@@ -334,10 +334,7 @@ function mostrarCarrito() {
     panel.style.display = "block";
     fondo.style.display = "block";
 
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${window.scrollAnterior}px`;
-    document.body.style.width = "100%";
-    document.body.style.overflow = "hidden";
+    
 }
 
 function cerrarCarrito() {
@@ -349,10 +346,7 @@ function cerrarCarrito() {
     fondo.style.display = "none";
     pedido.style.display = "none";
 
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    document.body.style.overflow = "";
+    
 
     window.scrollTo(0, window.scrollAnterior || 0);
 }
