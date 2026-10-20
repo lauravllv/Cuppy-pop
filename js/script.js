@@ -333,10 +333,12 @@ function mostrarCarrito() {
 
     panel.style.display = "block";
     fondo.style.display = "block";
- document.body.classList.remove("carrito-abierto");
+
+    document.body.classList.add("carrito-abierto");
+}
 
     
-}
+
 
 function cerrarCarrito() {
     const panel = document.getElementById("carrito-panel");
@@ -346,10 +348,8 @@ function cerrarCarrito() {
     panel.style.display = "none";
     fondo.style.display = "none";
     pedido.style.display = "none";
-
-    
-
-    window.scrollTo(0, window.scrollAnterior || 0);
+ window.scrollTo(0, window.scrollAnterior || 0);
+ document.body.classList.remove("carrito-abierto");
 }
 function mostrarPedido() {
 
