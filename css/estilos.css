@@ -1910,3 +1910,24 @@ html.modal-abierto {
     overflow: hidden !important;
     overscroll-behavior: none;
 }
+
+/* POSICIÓN DEL CARRITO A LA DERECHA EN CELULAR */
+@media screen and (max-width: 600px) {
+    .carrito-panel {
+        position: fixed !important;
+
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        bottom: 10px !important;
+
+        width: min(320px, calc(100vw - 20px)) !important;
+        height: auto !important;
+        max-height: none !important;
+
+        margin: 0 !important;
+        transform: none !important;
+
+        z-index: 1000 !important;
+    }
+}
