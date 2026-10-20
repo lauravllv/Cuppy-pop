@@ -2118,4 +2118,13 @@ padding-top: 200px !important;    }
 }
 
 
+@media (max-width: 768px) {
+    #productos,
+    #nosotros,
+    #galeria,
+    #contacto {
+        scroll-margin-top: 150px;
+    }
+}
+
 
