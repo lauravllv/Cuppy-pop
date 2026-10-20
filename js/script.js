@@ -360,7 +360,11 @@ function mostrarPedido() {
 
     const pedido = document.getElementById("pedido-panel");
     const resumen = document.getElementById("resumen-pedido");
+const carritoPanel = document.getElementById("carrito-panel");
+const fondoCarrito = document.getElementById("fondo-carrito");
 
+carritoPanel.style.display = "none";
+fondoCarrito.style.display = "none";
     resumen.innerHTML = "";
 
     if (carrito.length === 0) {
