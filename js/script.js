@@ -333,6 +333,7 @@ function mostrarCarrito() {
 
     panel.style.display = "block";
     fondo.style.display = "block";
+ document.body.classList.remove("carrito-abierto");
 
     
 }
