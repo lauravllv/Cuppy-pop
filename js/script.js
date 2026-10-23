@@ -553,6 +553,7 @@ async function enviarMensaje() {
         boton.textContent = "Enviar mensaje";
     }
 }
+}
 
 
 
