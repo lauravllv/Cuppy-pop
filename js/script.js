@@ -495,25 +495,58 @@ async function confirmarPedido() {
     }
 }
 
-function enviarMensaje() {
 
-    const nombre = document.getElementById("nombre-contacto").value;
-    const correo = document.getElementById("correo-contacto").value;
-    const mensaje = document.getElementById("mensaje-contacto").value;
+async function enviarMensaje() {
+    const nombre = document.getElementById("nombre-contacto").value.trim();
+    const correo = document.getElementById("correo-contacto").value.trim();
+    const mensaje = document.getElementById("mensaje-contacto").value.trim();
 
-    if (nombre === "" || correo === "" || mensaje === "") {
-
+    if (!nombre || !correo || !mensaje) {
         alert("⚠️ Por favor, completa todos los campos.");
-
         return;
     }
 
-    alert("💗 ¡Gracias por escribirnos! Hemos recibido tu mensaje.");
+    const boton = document.querySelector(
+        '.contacto-formulario button[onclick="enviarMensaje()"]'
+    );
 
-    document.getElementById("nombre-contacto").value = "";
-    document.getElementById("correo-contacto").value = "";
-    document.getElementById("mensaje-contacto").value = "";
+    if (boton) {
+        boton.disabled = true;
+        boton.textContent = "Enviando...";
+    }
+
+    try {
+        const respuesta = await fetch("/api/contacto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ nombre, correo, mensaje })
+        });
+
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(datos.error || "No se pudo enviar el mensaje.");
+        }
+
+        alert("💗 ¡Gracias por escribirnos! Hemos recibido tu mensaje.");
+
+        document.getElementById("nombre-contacto").value = "";
+        document.getElementById("correo-contacto").value = "";
+        document.getElementById("mensaje-contacto").value = "";
+
+    } catch (error) {
+        console.error("Error al enviar mensaje:", error);
+        alert("No pudimos enviar tu mensaje. Inténtalo nuevamente.");
+    } finally {
+        if (boton) {
+            boton.disabled = false;
+            boton.textContent = "Enviar mensaje";
+        }
+    }
 }
+
 
 
 
