@@ -536,14 +536,21 @@ async function enviarMensaje() {
         document.getElementById("correo-contacto").value = "";
         document.getElementById("mensaje-contacto").value = "";
 
-    } catch (error) {
-        console.error("Error al enviar mensaje:", error);
-        alert("No pudimos enviar tu mensaje. Inténtalo nuevamente.");
-    } finally {
-        if (boton) {
-            boton.disabled = false;
-            boton.textContent = "Enviar mensaje";
-        }
+   } catch (error) {
+    console.error("ERROR REAL DEL CONTACTO:", error);
+
+    alert(
+        "No se pudo enviar el mensaje.\n\nDetalle: " +
+        (error.message || String(error))
+    );
+} finally {
+    const boton = document.querySelector(
+        '.contacto-formulario button[onclick="enviarMensaje()"]'
+    );
+
+    if (boton) {
+        boton.disabled = false;
+        boton.textContent = "Enviar mensaje";
     }
 }
 
