@@ -582,8 +582,7 @@ console.log("✅ Mensaje guardado en Supabase");
             mensaje: "Tu mensaje se recibió correctamente."
         });
     } catch (error) {
-        console.error("Error en contacto:", error.message);
-
+console.error("Error en contacto:", error);
         return res.status(500).json({
             error: "No se pudo enviar el mensaje. Inténtalo de nuevo."
         });
