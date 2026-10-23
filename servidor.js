@@ -574,7 +574,7 @@ console.log("Datos recibidos en contacto:", req.body);
              VALUES ($1, $2, $3)`,
             [nombre.trim(), correo.trim(), mensaje.trim()]
         );
-
+console.log("✅ Mensaje guardado en Supabase");
         
 
         return res.json({
