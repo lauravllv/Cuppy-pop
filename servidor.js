@@ -544,17 +544,16 @@ app.get("/api/pedidos", async (req, res) => {
 
 
 
+
 app.post("/api/contacto", async (req, res) => {
     try {
-        const { nombre, correo, mensaje } = req.body;
+        const { nombre, correo, mensaje } = req.body || {};
 
         if (
-            typeof nombre !== "string" ||
+            typeof nombre !== "string" || !nombre.trim() ||
             typeof correo !== "string" ||
-            typeof mensaje !== "string" ||
-            !nombre.trim() ||
             !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.trim()) ||
-            !mensaje.trim()
+            typeof mensaje !== "string" || !mensaje.trim()
         ) {
             return res.status(400).json({
                 error: "Revisa tu nombre, correo y mensaje."
@@ -570,20 +569,20 @@ app.post("/api/contacto", async (req, res) => {
         );
 
         console.log(
-            "CONTACTO GUARDADO EN SUPABASE. ID:",
+            "CONTACTO GUARDADO. ID:",
             resultado.rows[0].id
         );
 
         return res.status(201).json({
             correcto: true,
-            mensaje: "Tu mensaje se guardó correctamente."
+            mensaje: "Tu mensaje se recibió correctamente."
         });
 
     } catch (error) {
-        console.error("ERROR AL GUARDAR CONTACTO:", error);
+        console.error("ERROR REAL AL GUARDAR CONTACTO:", error);
 
         return res.status(500).json({
-            error: "No se pudo guardar el mensaje en la base de datos."
+            error: "Error al guardar el mensaje: " + error.message
         });
     }
 });
