@@ -545,7 +545,7 @@ app.get("/api/pedidos", async (req, res) => {
 app.post("/api/contacto", async (req, res) => {
     try {
         const { nombre, correo, mensaje } = req.body;
-
+console.log("Datos recibidos en contacto:", req.body);
         if (
             typeof nombre !== "string" || !nombre.trim() ||
             typeof correo !== "string" ||
