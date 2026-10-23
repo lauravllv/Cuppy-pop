@@ -6,7 +6,6 @@ const path = require("path");
 const { randomUUID } = require("crypto");
 const { Pool } = require("pg");
 const { MercadoPagoConfig, Preference, Payment } = require("mercadopago");
-const { Resend } = require("resend");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -624,7 +623,6 @@ app.post("/api/contacto", async (req, res) => {
 
         // Enviar una notificación por correo con Resend.
         if (process.env.RESEND_API_KEY) {
-            const resend = new Resend(process.env.RESEND_API_KEY);
 
             const { error } = await resend.emails.send({
                 from: "Cuppy pop <onboarding@resend.dev>",
