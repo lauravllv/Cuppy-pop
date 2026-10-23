@@ -542,10 +542,11 @@ app.get("/api/pedidos", async (req, res) => {
 
 
 
+
 app.post("/api/contacto", async (req, res) => {
     try {
         const { nombre, correo, mensaje } = req.body;
-console.log("Datos recibidos en contacto:", req.body);
+
         if (
             typeof nombre !== "string" || !nombre.trim() ||
             typeof correo !== "string" ||
@@ -557,50 +558,29 @@ console.log("Datos recibidos en contacto:", req.body);
             });
         }
 
-        if (
-            nombre.trim().length > 100 ||
-            correo.trim().length > 254 ||
-            mensaje.trim().length > 3000
-        ) {
-            return res.status(400).json({
-                error: "Los datos son demasiado largos."
-            });
-        }
-
-        // Guardar el mensaje en Supabase.
-        console.log("📩 Llegó una solicitud al formulario de contacto");
         const resultado = await pool.query(
-    `INSERT INTO public.mensajes_contacto
-        (nombre, correo, mensaje)
-     VALUES ($1, $2, $3)
-     RETURNING id, nombre, correo, mensaje, fecha, estado`,
-    [
-        nombre.trim(),
-        correo.trim(),
-        mensaje.trim()
-    ]
-);
+            `INSERT INTO mensajes_contacto (nombre, correo, mensaje)
+             VALUES ($1, $2, $3)
+             RETURNING id`,
+            [nombre.trim(), correo.trim(), mensaje.trim()]
+        );
 
-console.log("MENSAJE GUARDADO:", resultado.rows[0]);
+        console.log("MENSAJE GUARDADO. ID:", resultado.rows[0].id);
 
-return res.status(201).json({
-    correcto: true,
-    mensaje: "Tu mensaje se recibió correctamente."
-});
-console.log("✅ Mensaje guardado en Supabase");
-        
-
-        return res.json({
+        return res.status(200).json({
             correcto: true,
             mensaje: "Tu mensaje se recibió correctamente."
         });
+
     } catch (error) {
-console.error("Error en contacto:", error);
+        console.error("ERROR REAL AL GUARDAR CONTACTO:", error);
+
         return res.status(500).json({
-            error: "No se pudo enviar el mensaje. Inténtalo de nuevo."
+            error: "Error al guardar el mensaje: " + error.message
         });
     }
 });
+
 
 app.use(express.static(__dirname));
 
