@@ -517,6 +517,54 @@ app.get("/pago/resultado", async (req, res) => {
     `);
 });
 
+ // CONTACTO: guardar mensajes en Supabase.
+app.post("/api/contacto", async (req, res) => {
+    try {
+        const { nombre, correo, mensaje } = req.body;
+
+        if (
+            typeof nombre !== "string" || !nombre.trim() ||
+            typeof correo !== "string" ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.trim()) ||
+            typeof mensaje !== "string" || !mensaje.trim()
+        ) {
+            return res.status(400).json({
+                error: "Completa tu nombre, correo y mensaje correctamente."
+            });
+        }
+
+        if (
+            nombre.trim().length > 100 ||
+            correo.trim().length > 254 ||
+            mensaje.trim().length > 3000
+        ) {
+            return res.status(400).json({
+                error: "El mensaje o los datos son demasiado largos."
+            });
+        }
+
+        await pool.query(`
+            INSERT INTO mensajes_contacto (nombre, correo, mensaje)
+            VALUES ($1, $2, $3)
+        `, [
+            nombre.trim(),
+            correo.trim(),
+            mensaje.trim()
+        ]);
+
+        res.status(201).json({
+            correcto: true,
+            mensaje: "¡Gracias por escribirnos!"
+        });
+    } catch (error) {
+        console.error("Error al guardar mensaje de contacto:", error.message);
+
+        res.status(500).json({
+            error: "No se pudo enviar tu mensaje. Inténtalo de nuevo."
+        });
+    }
+});
+
 // Consulta de pedidos para el panel de administración.
 app.get("/api/pedidos", async (req, res) => {
     try {
