@@ -569,11 +569,24 @@ console.log("Datos recibidos en contacto:", req.body);
 
         // Guardar el mensaje en Supabase.
         console.log("📩 Llegó una solicitud al formulario de contacto");
-        await pool.query(
-            `INSERT INTO mensajes_contacto (nombre, correo, mensaje)
-             VALUES ($1, $2, $3)`,
-            [nombre.trim(), correo.trim(), mensaje.trim()]
-        );
+        const resultado = await pool.query(
+    `INSERT INTO public.mensajes_contacto
+        (nombre, correo, mensaje)
+     VALUES ($1, $2, $3)
+     RETURNING id, nombre, correo, mensaje, fecha, estado`,
+    [
+        nombre.trim(),
+        correo.trim(),
+        mensaje.trim()
+    ]
+);
+
+console.log("MENSAJE GUARDADO:", resultado.rows[0]);
+
+return res.status(201).json({
+    correcto: true,
+    mensaje: "Tu mensaje se recibió correctamente."
+});
 console.log("✅ Mensaje guardado en Supabase");
         
 
