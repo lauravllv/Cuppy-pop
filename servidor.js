@@ -568,6 +568,7 @@ app.post("/api/contacto", async (req, res) => {
         }
 
         // Guardar el mensaje en Supabase.
+        console.log("📩 Llegó una solicitud al formulario de contacto");
         await pool.query(
             `INSERT INTO mensajes_contacto (nombre, correo, mensaje)
              VALUES ($1, $2, $3)`,
