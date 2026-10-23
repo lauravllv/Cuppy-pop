@@ -543,6 +543,7 @@ app.get("/api/pedidos", async (req, res) => {
 
 
 
+
 app.post("/api/contacto", async (req, res) => {
     try {
         const { nombre, correo, mensaje } = req.body;
@@ -559,27 +560,35 @@ app.post("/api/contacto", async (req, res) => {
         }
 
         const resultado = await pool.query(
-            `INSERT INTO mensajes_contacto (nombre, correo, mensaje)
+            `INSERT INTO public.mensajes_contacto
+                (nombre, correo, mensaje)
              VALUES ($1, $2, $3)
              RETURNING id`,
             [nombre.trim(), correo.trim(), mensaje.trim()]
         );
 
-        console.log("MENSAJE GUARDADO. ID:", resultado.rows[0].id);
+        console.log(
+            "MENSAJE GUARDADO EN SUPABASE. ID:",
+            resultado.rows[0].id
+        );
 
-        return res.status(200).json({
+        return res.status(201).json({
             correcto: true,
             mensaje: "Tu mensaje se recibió correctamente."
         });
 
     } catch (error) {
-        console.error("ERROR REAL AL GUARDAR CONTACTO:", error);
+        console.error(
+            "ERROR REAL AL GUARDAR CONTACTO:",
+            error.message
+        );
 
         return res.status(500).json({
-            error: "Error al guardar el mensaje: " + error.message
+            error: "No se pudo guardar el mensaje: " + error.message
         });
     }
 });
+
 
 
 app.use(express.static(__dirname));
