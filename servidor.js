@@ -621,24 +621,7 @@ app.post("/api/contacto", async (req, res) => {
             [nombre.trim(), correo.trim(), mensaje.trim()]
         );
 
-        // Enviar una notificación por correo con Resend.
-        if (process.env.RESEND_API_KEY) {
-
-            const { error } = await resend.emails.send({
-                from: "Cuppy pop <onboarding@resend.dev>",
-                to: ["svlaura576@gmail.com"],
-                replyTo: correo.trim(),
-                subject: `Nuevo mensaje de contacto: ${nombre.trim()}`,
-                text:
-                    `Nombre: ${nombre.trim()}\n` +
-                    `Correo: ${correo.trim()}\n\n` +
-                    `Mensaje:\n${mensaje.trim()}`
-            });
-
-            if (error) {
-                console.error("Error al enviar correo:", error);
-            }
-        }
+        
 
         return res.json({
             correcto: true,
