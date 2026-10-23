@@ -6,6 +6,7 @@ const path = require("path");
 const { randomUUID } = require("crypto");
 const { Pool } = require("pg");
 const { MercadoPagoConfig, Preference, Payment } = require("mercadopago");
+const { Resend } = require("resend");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -582,6 +583,74 @@ app.get("/api/pedidos", async (req, res) => {
 
         res.status(500).json({
             error: "No se pudieron consultar los pedidos."
+        });
+    }
+});
+
+
+
+
+app.post("/api/contacto", async (req, res) => {
+    try {
+        const { nombre, correo, mensaje } = req.body;
+
+        if (
+            typeof nombre !== "string" || !nombre.trim() ||
+            typeof correo !== "string" ||
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.trim()) ||
+            typeof mensaje !== "string" || !mensaje.trim()
+        ) {
+            return res.status(400).json({
+                error: "Completa correctamente todos los campos."
+            });
+        }
+
+        if (
+            nombre.trim().length > 100 ||
+            correo.trim().length > 254 ||
+            mensaje.trim().length > 3000
+        ) {
+            return res.status(400).json({
+                error: "Los datos son demasiado largos."
+            });
+        }
+
+        // Guardar el mensaje en Supabase.
+        await pool.query(
+            `INSERT INTO mensajes_contacto (nombre, correo, mensaje)
+             VALUES ($1, $2, $3)`,
+            [nombre.trim(), correo.trim(), mensaje.trim()]
+        );
+
+        // Enviar una notificación por correo con Resend.
+        if (process.env.RESEND_API_KEY) {
+            const resend = new Resend(process.env.RESEND_API_KEY);
+
+            const { error } = await resend.emails.send({
+                from: "Cuppy pop <onboarding@resend.dev>",
+                to: ["svlaura576@gmail.com"],
+                replyTo: correo.trim(),
+                subject: `Nuevo mensaje de contacto: ${nombre.trim()}`,
+                text:
+                    `Nombre: ${nombre.trim()}\n` +
+                    `Correo: ${correo.trim()}\n\n` +
+                    `Mensaje:\n${mensaje.trim()}`
+            });
+
+            if (error) {
+                console.error("Error al enviar correo:", error);
+            }
+        }
+
+        return res.json({
+            correcto: true,
+            mensaje: "Tu mensaje se recibió correctamente."
+        });
+    } catch (error) {
+        console.error("Error en contacto:", error.message);
+
+        return res.status(500).json({
+            error: "No se pudo enviar el mensaje. Inténtalo de nuevo."
         });
     }
 });
